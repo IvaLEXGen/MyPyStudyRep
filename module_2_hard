@@ -1,0 +1,16 @@
+dead_corpse_nearby = ('Кратные делители! Последовательность из пар, дающих кратные первому числу суммы!! Слишком '
+                      'поздно, о нееее....')
+import random
+key_number = range(3, 21)
+key_stone = random.choice(key_number)
+print(key_stone)
+numbers = range(1, 21)
+used_numbers = []
+password = []
+for i in numbers:
+    for j in numbers:
+        if key_stone % (i + j) == 0 and i != j and j not in used_numbers:
+            used_numbers.append(i)
+            password.append(str(i))
+            password.append(str(j))
+print(''.join(password))
