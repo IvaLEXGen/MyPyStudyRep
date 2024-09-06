@@ -1,14 +1,10 @@
-string_info_count = 0
-is_contains_count = 0
-
+calls = 0
 def string_info(string):
-    global string_info_count
     info = (len(string), string.upper(), string.lower())
-    string_info_count += 1
+    count_calls()
     return info
 
 def is_contains(string, new_list):
-    global is_contains_count
     true_not_true = True
     compare_list = []
     string = string.casefold()
@@ -17,13 +13,13 @@ def is_contains(string, new_list):
         compare_list.append(i)
     if string not in compare_list:
         true_not_true = False
-    is_contains_count += 1
+    count_calls()
     return true_not_true
 
 def count_calls():
-    global string_info_count, is_contains_count
-    count = string_info_count + is_contains_count
-    return count
+    global calls
+    calls += 1
+    return calls - 1
 
 print(string_info('Capybara'))
 print(string_info('Armageddon'))
