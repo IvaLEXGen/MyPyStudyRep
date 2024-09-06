@@ -1,0 +1,35 @@
+string_info_count = 0
+is_contains_count = 0
+
+def string_info(string):
+    global string_info_count
+    info = (len(string), string.upper(), string.lower())
+    string_info_count += 1
+    return info
+
+def is_contains(string, new_list):
+    global is_contains_count
+    true_not_true = True
+    compare_list = []
+    string = string.casefold()
+    for i in new_list:
+        i = i.casefold()
+        compare_list.append(i)
+    if string in compare_list:
+        true_not_true = True
+    else:
+        true_not_true = False
+    is_contains_count += 1
+    return true_not_true
+
+def count_calls():
+    global string_info_count, is_contains_count
+    count = string_info_count + is_contains_count
+    return count
+
+
+print(string_info('Capybara'))
+print(string_info('Armageddon'))
+print(is_contains('Urban', ['uRbaN', 'foRban', 'tarbAn', 'BaNan']))
+print(is_contains('cycle', ['recycling', 'cyclic']))
+print(count_calls())
