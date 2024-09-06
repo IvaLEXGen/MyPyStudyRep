@@ -15,9 +15,7 @@ def is_contains(string, new_list):
     for i in new_list:
         i = i.casefold()
         compare_list.append(i)
-    if string in compare_list:
-        true_not_true = True
-    else:
+    if string not in compare_list:
         true_not_true = False
     is_contains_count += 1
     return true_not_true
@@ -26,7 +24,6 @@ def count_calls():
     global string_info_count, is_contains_count
     count = string_info_count + is_contains_count
     return count
-
 
 print(string_info('Capybara'))
 print(string_info('Armageddon'))
