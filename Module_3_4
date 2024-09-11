@@ -1,0 +1,17 @@
+def single_root_words(root_word, *other_words):
+    same_words = []
+    for i in other_words:
+        root_word_casefold = root_word.casefold()
+        original_other_word = i
+        i = str(i).casefold()
+        if root_word_casefold in i:
+            same_words.append(original_other_word)
+        elif i in root_word_casefold:
+            same_words.append(original_other_word)
+    return same_words
+
+
+result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
+print(result1)
+print(result2)
