@@ -4,9 +4,7 @@ def single_root_words(root_word, *other_words):
         root_word_casefold = root_word.casefold()
         original_other_word = i
         i = str(i).casefold()
-        if root_word_casefold in i:
-            same_words.append(original_other_word)
-        elif i in root_word_casefold:
+        if root_word_casefold in i or i in root_word_casefold:
             same_words.append(original_other_word)
     return same_words
 
