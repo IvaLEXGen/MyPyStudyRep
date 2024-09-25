@@ -1,0 +1,32 @@
+data_structure = [
+    [1, 2, 3],
+    {'a': 4, 'b': 5},
+    (6, {'cube': 7, 'drum': 8}),
+    "Hello",
+    ((), [{(2, 'Urban', ('Urban2', 35))}])
+]
+
+def counter(list_):
+    summ = 0
+
+
+    def recursion(smth):
+        nonlocal summ
+        if isinstance(smth, list) or isinstance(smth, tuple) or isinstance(smth, set):
+            for i in smth:
+                recursion(i)
+        elif isinstance(smth, dict):
+            for k in smth.keys():
+                recursion(k)
+            for v in smth.values():
+                recursion(v)
+        elif isinstance(smth, int) or isinstance(smth, str):
+            if isinstance(smth, int):
+                summ += smth
+            elif isinstance(smth, str):
+                summ += len(smth)
+
+    recursion(data_structure)
+    return summ
+
+print(counter(data_structure))
