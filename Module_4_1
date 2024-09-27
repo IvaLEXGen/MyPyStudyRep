@@ -1,0 +1,8 @@
+from school_math import divide as div_1
+from higher_math import divide as div_2
+
+
+print(div_1(10, 2))
+print(div_1(5, 0))
+print(div_2(10, 5))
+print(div_2(5, 0))
