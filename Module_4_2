@@ -2,10 +2,9 @@ def test_function():
 
 
     def inner_function():
-        print('Привет, я внутри функции test function!')
+        print('Я в области видимости функции test_function')
 
     inner_function()
 
-test_function() # Текст функции inner_function появляется в консоли.
+test_function() 
 
-inner_function() # Текст функции inner_function не появляется, выводится ошибка о том, что такая функция не определена.
