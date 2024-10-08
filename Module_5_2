@@ -1,0 +1,29 @@
+class House:
+    def __init__(self, name,
+                 floors):
+        self.name = name
+        self.floors = floors
+
+    def __len__(self):
+        print(self.floors)
+
+    def __str__(self):
+        print(f'Название:{self.name}, высота: {self.floors} этажей.')
+
+    def go_to(self, new_floor):
+        if new_floor < 1 or new_floor > self.floors:
+            print('Такого этажа не существует!')
+        else:
+            for floor in range(1, new_floor + 1):
+                print(floor)
+
+
+Empire_SB = House('Empire State Building',
+                  102)
+Lakhta_Centre = House('Lakhta Centre',
+                      87)
+
+Empire_SB.__str__()
+Lakhta_Centre.__str__()
+Empire_SB.__len__()
+Lakhta_Centre.__len__()
