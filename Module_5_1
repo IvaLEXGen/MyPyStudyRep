@@ -1,0 +1,21 @@
+class House:  # объявляется класс объектов под названием 'House'
+    def __init__(self, name,
+                 floors):  # определяется инициализатор класса объектов с указанием присущих этим объектам атрибутов
+        self.name = name
+        self.floors = floors
+
+    def go_to(self, new_floor):  # определяется метод 'go_to' внутри класса 'House'
+        if new_floor < 1 or new_floor > self.floors:
+            print('Такого этажа не существует!')
+        else:
+            for floor in range(1, new_floor + 1):
+                print(floor)
+
+
+Empire_SB = House('Empire State Building',
+                  102)  # объявляется объект 'Empire_SB' класса 'House', указываются уникальные атрибуты данного объекта
+Lakhta_Centre = House('Lakhta Centre',
+                      87)  # объявляется объект 'Lakhta_Centre' класса 'House', указываются уникальные атрибуты данного объекта
+
+Empire_SB.go_to(34)
+Lakhta_Centre.go_to(100)
