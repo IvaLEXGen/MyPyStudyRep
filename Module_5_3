@@ -1,0 +1,99 @@
+class House:
+    def __init__(self, name,                     # Конструктор объекта
+                 floors):
+        self.name = name
+        self.floors = floors
+
+    def __str__(self):                           # Определение строкового представления объекта. Этот метод будет
+        return (f'Название: {self.name}, '       # автоматически вызываться при вызове функции print() для объекта
+                f'высота: {self.floors} этажей.')
+
+    def __eq__(self, other):                     # Определение логики сравнения количества этажей с целым числом или
+        if isinstance(other, int):               # с количеством этажей у аналогичного объекта
+            return self.floors == other
+        elif isinstance(other, House):
+            return self.floors == other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __add__(self, other):                    # Определение метода сложения количества этажей объекта с целым числом
+        if isinstance(other, int):               # или с количеством этажей аналогичного объекта
+            self.floors += other
+            return self
+        elif isinstance(other, House):
+            self.floors += other.floors
+            return self
+        else:
+            print('Введите корректные данные!')
+            return  self
+
+    def __iadd__(self, other):                   # Определение метода для использования оператора присваивания '+=',
+        return self.__add__(other)               # использует ранее определённый метод __add__(self, other)
+
+    def __radd__(self, other):                   # Определение метода __radd__ для получения возможности смены мест
+        return self.__add__(other)               # слагаемых self и other, использует метод __add__
+
+    def __lt__(self, other):                     # Определение метода для сравнения кол-ва этажей объекта оператором
+        if isinstance(other, int):               # 'меньше чем' с целым числом или с кол-м этажей аналогичного объекта
+            return self.floors < other
+        elif isinstance(other, House):
+            return self.floors < other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __le__(self, other):                     # Определение метода для сравнения кол-ва этажей объекта оператором
+        if isinstance(other, int):               # 'меньше или равно' с целым числом или с кол-м этажей аналогичного объекта
+            return self.floors <= other
+        elif isinstance(other, House):
+            return self.floors <= other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __gt__(self, other):                     # Определение метода для сравнения кол-ва этажей объекта оператором
+        if isinstance(other, int):               # 'больше чем' с целым числом или с кол-м этажей аналогичного объекта
+            return self.floors > other
+        elif isinstance(other, House):
+            return self.floors > other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __ge__(self, other):                     # Определение метода для сравнения кол-ва этажей объекта оператором
+        if isinstance(other, int):               # 'больше или равно' с целым числом или с кол-м этажей аналогичного объекта
+            return self.floors >= other
+        elif isinstance(other, House):
+            return self.floors >= other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __ne__(self, other):                     # Определение метода для сравнения кол-ва этажей объекта оператором
+        if isinstance(other, int):               # 'не равно' с целым числом или с кол-м этажей аналогичного объекта
+            return self.floors != other
+        elif isinstance(other, House):
+            return self.floors != other.floors
+        else:
+            return 'Введите корректные данные!'
+
+
+
+living_complex_1 = House('Ivanovskiy',
+                         15)
+living_complex_2 = House('Boyarskiy',
+                         25)
+
+
+print(living_complex_1)
+print(living_complex_2)
+print(living_complex_1 == living_complex_2)
+living_complex_1 = living_complex_1 + 10
+print(living_complex_1)
+print(living_complex_1 == living_complex_2)
+living_complex_1 += 10
+print(living_complex_1)
+living_complex_2 = 10 + living_complex_2
+print(living_complex_2)
+print(living_complex_1 > living_complex_2)
+print(living_complex_1 >= living_complex_2)
+print(living_complex_1 < living_complex_2)
+print(living_complex_1 <= living_complex_2)
+print(living_complex_1 != living_complex_2)
+
