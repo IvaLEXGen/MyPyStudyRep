@@ -1,0 +1,98 @@
+class House:
+
+    houses_history = []                               # создание классового атрибута, пустого списка для занесения
+                                                      # в него информации о зданиях
+
+    def __new__(cls, *args, **kwargs):                # определение метода __new__, в котором прописана логика добавления
+        cls.houses_history.append(args[0])            # в классовый атрибут cls.houses_history названия строения,
+        return object.__new__(cls)                    # взятого из нулевого индекса кортежа, попавшего в args
+
+    def __init__(self, name,
+                 floors):
+        self.name = name
+        self.floors = floors
+
+    def __str__(self):
+        return (f'Название: {self.name}, '       
+                f'высота: {self.floors} этажей.')
+
+    def __eq__(self, other):
+        if isinstance(other, int):
+            return self.floors == other
+        elif isinstance(other, House):
+            return self.floors == other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __add__(self, other):
+        if isinstance(other, int):
+            self.floors += other
+            return self
+        elif isinstance(other, House):
+            self.floors += other.floors
+            return self
+        else:
+            print('Введите корректные данные!')
+            return  self
+
+    def __iadd__(self, other):
+        return self.__add__(other)
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+    def __lt__(self, other):
+        if isinstance(other, int):
+            return self.floors < other
+        elif isinstance(other, House):
+            return self.floors < other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __le__(self, other):
+        if isinstance(other, int):
+            return self.floors <= other
+        elif isinstance(other, House):
+            return self.floors <= other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __gt__(self, other):
+        if isinstance(other, int):
+            return self.floors > other
+        elif isinstance(other, House):
+            return self.floors > other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __ge__(self, other):
+        if isinstance(other, int):
+            return self.floors >= other
+        elif isinstance(other, House):
+            return self.floors >= other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __ne__(self, other):
+        if isinstance(other, int):
+            return self.floors != other
+        elif isinstance(other, House):
+            return self.floors != other.floors
+        else:
+            return 'Введите корректные данные!'
+
+    def __del__(self):                                    # определение метода __del__
+        print(f'{self.name} снесён, '
+              f'но он останется в истории!')
+
+
+
+living_complex_1 = House('ЖК Ивановский',15)
+print(House.houses_history)
+living_complex_2 = House('ЖК Боярский',25)
+print(House.houses_history)
+living_complex_3 = House('ЖК Старофоминский',20)
+print(House.houses_history)
+del living_complex_2
+del living_complex_3
+print(House.houses_history)
